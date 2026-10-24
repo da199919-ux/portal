@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>da199919 網站總覽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+  :root {
+    --bg: #eef1f3;
+    --panel: #ffffff;
+    --ink: #1b2329;
+    --muted: #5b6770;
+    --line: #cdd5db;
+    --accent: #c4570f;
+    --accent-ink: #ffffff;
+    --chip: #e3e8ec;
+    --live: #2e7d4f;
+    --font-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #151a1e; --panel: #1e252a; --ink: #e6ebee; --muted: #9aa6ae; --line: #323c43;
+      --accent: #f08a3e; --accent-ink: #1b1206; --chip: #2a3339; --live: #5cc28a;
+      color-scheme: dark;
+    }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding-block: 40px 56px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid;
+    gap: 40px;
+  }
+
+  .titleblock {
+    border: 2px solid var(--ink);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    background: var(--panel);
+  }
+  .titleblock h1 {
+    margin: 0;
+    padding: 20px 22px;
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    text-wrap: balance;
+    border-right: 2px solid var(--ink);
+  }
+  .titleblock h1 small {
+    display: block;
+    margin-top: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0;
+  }
+  .meta { display: grid; min-width: 180px; margin: 0; }
+  .meta div {
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    gap: 2px;
+  }
+  .meta div:last-child { border-bottom: 0; }
+  .meta dt, .label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: var(--font-mono);
+  }
+  .meta dd {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  @media (max-width: 600px) {
+    .titleblock { grid-template-columns: 1fr; }
+    .titleblock h1 { border-right: 0; border-bottom: 2px solid var(--ink); }
+    .meta { grid-template-columns: repeat(3, 1fr); min-width: 0; }
+    .meta div { border-bottom: 0; border-right: 1px solid var(--line); padding: 8px 12px; }
+    .meta div:last-child { border-right: 0; }
+  }
+
+  section { display: grid; gap: 14px; }
+  section > h2 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  section > h2 .label { font-size: 11px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+  }
+
+  .site {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
+    min-width: 0;
+  }
+  .site header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .live {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--live);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .live::before {
+    content: "";
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--live);
+  }
+  .body { padding: 14px 16px 6px; display: grid; gap: 8px; align-content: start; }
+  .body h3 { margin: 0; font-size: 20px; font-weight: 700; line-height: 1.35; }
+  .body p { margin: 0; color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 16px 14px; }
+  .chip {
+    background: var(--chip);
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    border-top: 1px solid var(--line);
+  }
+  .actions a, .actions button {
+    font: inherit;
+    font-size: 14px;
+    padding: 11px 14px;
+    text-decoration: none;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .open {
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 700;
+  }
+  .open:hover { filter: brightness(1.08); }
+  .ghost {
+    background: transparent;
+    color: var(--ink);
+    border-left: 1px solid var(--line) !important;
+  }
+  .ghost:hover { background: var(--chip); }
+  .actions a:focus-visible, .actions button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -4px;
+  }
+  .url {
+    padding: 0 16px 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="titleblock">
+    <h1>網站總覽<small>GitHub Pages 上已發布的工具與頁面</small></h1>
+    <dl class="meta">
+      <div><dt>帳號</dt><dd>da199919-ux</dd></div>
+      <div><dt>網站數</dt><dd>4</dd></div>
+      <div><dt>整理日期</dt><dd>2026-10-24</dd></div>
+    </dl>
+  </div>
+
+  <section>
+    <h2>工廠作業 <span class="label">3 sites</span></h2>
+    <div class="grid">
+
+      <article class="site">
+        <header><span class="tag">cnc-material-workbench</span><span class="live">已上線</span></header>
+        <div class="body">
+          <h3>備料工作台</h3>
+          <p>輸入成品厚 × 寬 × 長與每側留量，算出備料尺寸、毛重，並比對同材質的規格價格表。</p>
+        </div>
+        <div class="chips"><span class="chip">CNC 備料</span><span class="chip">每側留量 2 mm</span><span class="chip">更新 10/24</span></div>
+        <div class="url">da199919-ux.github.io/cnc-material-workbench/</div>
+        <div class="actions">
+          <a class="open" href="https://da199919-ux.github.io/cnc-material-workbench/" target="_blank" rel="noopener">開啟網站 ↗</a>
+          <button class="ghost copy" type="button" data-url="https://da199919-ux.github.io/cnc-material-workbench/">複製網址</button>
+          <a class="ghost" href="https://github.com/da199919-ux/cnc-material-workbench" target="_blank" rel="noopener">原始碼</a>
+        </div>
+      </article>
+
+      <article class="site">
+        <header><span class="tag">iron-weight-calculator</span><span class="live">已上線</span></header>
+        <div class="body">
+          <h3>鐵件重量計算器</h3>
+          <p>板材、圓棒、圓管、方管、六角棒的重量計算，含材料費與稅額估算。尺寸用 mm，結果為 kg。</p>
+        </div>
+        <div class="chips"><span class="chip">SS / SUS304 / 鋁 / 銅</span><span class="chip">更新 08/04</span></div>
+        <div class="url">da199919-ux.github.io/iron-weight-calculator/</div>
+        <div class="actions">
+          <a class="open" href="https://da199919-ux.github.io/iron-weight-calculator/" target="_blank" rel="noopener">開啟網站 ↗</a>
+          <button class="ghost copy" type="button" data-url="https://da199919-ux.github.io/iron-weight-calculator/">複製網址</button>
+          <a class="ghost" href="https://github.com/da199919-ux/iron-weight-calculator" target="_blank" rel="noopener">原始碼</a>
+        </div>
+      </article>
+
+      <article class="site">
+        <header><span class="tag">juntao-machine</span><span class="live">已上線</span></header>
+        <div class="body">
+          <h3>軍陶機台作業選單</h3>
+          <p>給機台旁 NFC 標籤用的轉接頁，手機一感應就進入該機台的作業選單。</p>
+        </div>
+        <div class="chips"><span class="chip">NFC 轉接</span><span class="chip">更新 10/03</span></div>
+        <div class="url">da199919-ux.github.io/juntao-machine/</div>
+        <div class="actions">
+          <a class="open" href="https://da199919-ux.github.io/juntao-machine/" target="_blank" rel="noopener">開啟網站 ↗</a>
+          <button class="ghost copy" type="button" data-url="https://da199919-ux.github.io/juntao-machine/">複製網址</button>
+          <a class="ghost" href="https://github.com/da199919-ux/juntao-machine" target="_blank" rel="noopener">原始碼</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>生活 <span class="label">1 site</span></h2>
+    <div class="grid">
+
+      <article class="site">
+        <header><span class="tag">costco-daily-deals</span><span class="live">已上線</span></header>
+        <div class="body">
+          <h3>Costco 台灣每日優惠</h3>
+          <p>每天早上 7:00 自動整理 Costco 台灣官網的線上優惠，列出今日新增商品，常買清單的優惠排在最上面。</p>
+        </div>
+        <div class="chips"><span class="chip">每日 07:00 自動更新</span><span class="chip">更新 10/24</span></div>
+        <div class="url">da199919-ux.github.io/costco-daily-deals/</div>
+        <div class="actions">
+          <a class="open" href="https://da199919-ux.github.io/costco-daily-deals/" target="_blank" rel="noopener">開啟網站 ↗</a>
+          <button class="ghost copy" type="button" data-url="https://da199919-ux.github.io/costco-daily-deals/">複製網址</button>
+          <a class="ghost" href="https://github.com/da199919-ux/costco-daily-deals" target="_blank" rel="noopener">原始碼</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+</div>
+
+<script>
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var url = btn.dataset.url;
+      var done = function () {
+        btn.textContent = '已複製';
+        setTimeout(function () { btn.textContent = '複製網址'; }, 1500);
+      };
+      var fallback = function () {
+        var urlEl = btn.closest('.site').querySelector('.url');
+        var range = document.createRange();
+        range.selectNodeContents(urlEl);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        btn.textContent = '已選取，請按複製';
+        setTimeout(function () { btn.textContent = '複製網址'; }, 2000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done, fallback);
+      } else {
+        fallback();
+      }
+    });
+  });
+</script>
+</body>
+</html>
